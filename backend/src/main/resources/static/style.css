@@ -1,0 +1,149 @@
+/* 1. Declaración de variables (Tokens CSS) globales */
+:root {
+    --primary-color: hsl(220, 90%, 56%);
+--bg-light: hsl(210, 40%, 98%);
+--bg-dark: hsl(222, 47%, 11%);
+--bg-card: hsl(223, 47%, 16%);
+--text-main: hsl(210, 40%, 98%);
+--text-muted: hsl(215, 20%, 65%);
+--border-color: hsl(217, 32%, 22%);
+--success: hsl(142, 70%, 45%);
+--error-color: hsl(0, 84%, 60%);
+--font-stack: system-ui, -apple-system, sans-serif;
+}
+* {
+box-sizing: border-box;
+margin: 0;
+padding: 0;
+}
+body {
+background-color: var(--bg-dark);
+color: var(--text-main);
+font-family: var(--font-stack);
+padding: 20px;
+min-height: 100vh;
+}
+.app-header {
+text-align: center;
+margin-bottom: 40px;
+padding-bottom: 20px;
+border-bottom: 1px solid var(--border-color);
+h1 {
+color: var(--primary-color);
+font-size: 2rem;
+margin-bottom: 8px;
+}
+p {
+color: var(--text-muted);
+font-size: 0.95rem;
+}
+}
+.app-container {
+display: flex;
+flex-direction: column;
+gap: 30px;
+max-width: 1200px;
+margin: 0 auto;
+/* En pantallas grandes, divide formulario y panel en dos columnas */
+@media (min-width: 768px) {
+flex-direction: row;
+align-items: flex-start;
+}
+}
+.form-section, .dashboard-section {
+background-color: var(--bg-card);
+border: 1px solid var(--border-color);
+border-radius: 12px;
+padding: 30px;
+box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+.form-section {
+flex: 1;
+position: sticky;
+top: 20px;
+}
+.dashboard-section {
+flex: 2;
+}
+h2 {
+color: var(--text-main);
+font-size: 1.4rem;
+margin-bottom: 20px;
+border-left: 4px solid var(--primary-color);
+padding-left: 10px;
+}
+/* 2. Nesting Nativo para elementos de formulario */
+#formAsignacion {
+display: flex;
+flex-direction: column;
+gap: 15px;
+.form-group {
+display: flex;
+flex-direction: column;
+gap: 6px;
+label {
+font-size: 0.85rem;
+color: var(--text-muted);
+font-weight: bold;
+}
+input, textarea {
+padding: 10px;
+background-color: var(--bg-dark);
+border: 1px solid var(--border-color);
+border-radius: 6px;
+color: var(--text-main);
+font-size: 0.95rem;
+outline: none;
+transition: border-color 0.2s;
+&:focus {
+border-color: var(--primary-color);
+}
+}
+}
+.btn-submit {
+padding: 12px;
+background-color: var(--primary-color);
+color: white;
+border: none;
+border-radius: 6px;
+font-weight: bold;
+cursor: pointer;
+transition: background-color 0.2s;
+&:hover {
+background-color: hsl(220, 90%, 48%);
+}
+}
+}
+/* 3. Rejilla CSS Grid elástica para desplegar las asignaciones */
+.grid-asignaciones {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+gap: 20px;
+}
+.notificacion {
+margin-top: 15px;
+padding: 10px;
+border-radius: 6px;
+font-size: 0.85rem;
+text-align: center;
+border: 1px solid transparent;
+&.exito {
+background-color: rgba(34, 197, 94, 0.1);
+border-color: var(--success);
+color: var(--success);
+}
+&.error {
+background-color: rgba(239, 68, 68, 0.1);
+border-color: var(--error-color);
+color: var(--error-color);
+}
+}
+.hidden {
+display: none !important;
+}
+.cargando, .vacio {
+grid-column: 1 / -1;
+text-align: center;
+color: var(--text-muted);
+padding: 40px 0;
+}

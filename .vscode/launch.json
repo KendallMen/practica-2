@@ -1,0 +1,35 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+        "type": "java",
+        "name": "Practica2Application",
+        "request": "launch",
+        "mainClass": "cr.ac.ucr.paraiso.ie.C4H142.practica2.Practica2Application",
+        "projectName": "practica-2"
+    },
+    {
+        "type": "java",
+        "name": "Debug Spring Boot Backend",
+        "request": "launch",
+        "mainClass": "cr.ac.ucr.paraiso.ie.carnet.practica2.Practica2Application",
+        "projectName": "practica-2"
+    },
+    {
+        "type": "chrome",
+        "name": "Debug Frontend in Chrome",
+        "url": "http://localhost:8080",
+        "webRoot": "${workspaceFolder}/backend/src/main/resources/static",
+        "request": "launch"
+    }
+],
+  "compounds": [
+    {
+      "name": "Debug Full Stack (Java + Chrome)",
+      "configurations": [
+        "Debug Spring Boot Backend",
+        "Debug Frontend in Chrome"
+      ]
+    }
+  ]
+}
